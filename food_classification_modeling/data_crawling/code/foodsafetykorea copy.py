@@ -57,39 +57,39 @@ async def crawl_details(report_numbers):
                 print("추출된 텍스트:", table_data.get_text())
 
 # 세부 페이지를 요청하는 비동기 함수
-async def fetch_detail_page(page, session, url, report_number):
-    params = {'prdlstReportLedgNo': '2024021000386672'}  # 신고번호를 파라미터로 전달
+async def fetch_detail_page(session, url):
+    # params = {'prdlstReportLedgNo': '2024021000386672'}  # 신고번호를 파라미터로 전달
 
-    # async with session.get(url, params=params) as response:
-    headers = {
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-        "cache-control": "max-age=0",
-        "connection": "keep-alive",
-        "content-type": "application/x-www-form-urlencoded",
-        "sec-ch-ua": '"Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"',
-        "sec-ch-ua-mobile": "?0",
-        "sec-ch-ua-platform": "Windows",
-        "sec-fetch-dest": "document",
-        "sec-fetch-mode": "navigate",
-        "sec-fetch-site": "same-origin",
-        "sec-fetch-user": "?1",
-        "upgrade-insecure-requests": "1",
-        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
-    }
+    # # async with session.get(url, params=params) as response:
+    # headers = {
+    #     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+    #     "accept-encoding": "gzip, deflate, br, zstd",
+    #     "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+    #     "cache-control": "max-age=0",
+    #     "connection": "keep-alive",
+    #     "content-type": "application/x-www-form-urlencoded",
+    #     "sec-ch-ua": '"Chromium";v="128", "Not;A=Brand";v="24", "Google Chrome";v="128"',
+    #     "sec-ch-ua-mobile": "?0",
+    #     "sec-ch-ua-platform": "Windows",
+    #     "sec-fetch-dest": "document",
+    #     "sec-fetch-mode": "navigate",
+    #     "sec-fetch-site": "same-origin",
+    #     "sec-fetch-user": "?1",
+    #     "upgrade-insecure-requests": "1",
+    #     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36"
+    # }
 
-    async with session.get(url, headers = headers, json=params) as response:
+    async with session.get(url) as response:
         print('start crawling from site')
         text = await response.text()
         print('end crawling from site')
-        print(text, file = open('result.html', 'w+', encoding = 'utf-8'))
+        print(text, file = open('add_result.html', 'w+', encoding = 'utf-8'))
         return await response.text()  # HTML을 텍스트로 반환
 
 # main 함수
 async def main():
     async with aiohttp.ClientSession() as session:
-        await fetch_detail_page(session, 'https://www.foodsafetykorea.go.kr/portal/healthyfoodlife/searchHomeHFDetail.do', '200400200023743')
+        await fetch_detail_page(session, 'https://www.foodsafetykorea.go.kr:443/portal/healthyfoodlife/searchHomeHFDetail.do?prdlstReportLedgNo=2024021000386672&amp;search_code=01&amp;start_idx=1&amp;show_cnt=10&amp;menu_no=2823&amp;menu_grp=MENU_NEW01')
     # async with async_playwright() as p:
     #     browser = await p.chromium.launch(headless=False)
     #     page = await browser.new_page()
@@ -106,3 +106,5 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+    
+## 신고번호가 아니라 input의 value값으로 새로 추출 후 다시 크롤링 진행 해야함
