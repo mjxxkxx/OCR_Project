@@ -29,15 +29,6 @@ def foodsafety():
         print("Failed to retrieve the page")
 
     return data_dict
-#############
-질문내용
-1) ctrl + U = requests
-2) 개발자도구 = BeautifulSoup
-3) 매크로 = playwright
-4) async = 1+2+3 모두 비동기로 작동
-이거 맞나요...?
-구분이 잘 안가네요...
-#############
 
 # 상세 페이지 요청을 위한 함수
 async def crawl_details(item_values):
