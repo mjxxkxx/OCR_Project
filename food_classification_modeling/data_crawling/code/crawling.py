@@ -22,7 +22,7 @@ def crawl_all_foodsafety_data():
     all_data = []
 
     # 한 번에 가져올 데이터 수
-    show_cnt = 500
+    show_cnt = 38558
     start_idx = 1
     total_count = None
 
@@ -46,7 +46,10 @@ def crawl_all_foodsafety_data():
         if response.status_code == 200:
             # JSON 데이터로 변환
             data = response.json()
-
+            print(data)
+            
+            print(data, file=open('report.json', 'a+', encoding = 'utf-8'))
+            
             # 첫 요청에서는 total_count를 확인하여 전체 데이터 개수를 확인
             if total_count is None:
                 total_count = int(data[0]["total_count"]) if data else 0
