@@ -18,7 +18,7 @@ pd.set_option('display.width', 5000)
 # API Gateway Invoke URL and Secret Key
 api_url = 'https://ql83sffmog.apigw.ntruss.com/custom/v1/34535/06797cb00558c159cb06e810ab3a4f931278516b50f25ac4b2858bed67990773/general'
 secret_key = 'ZWZmVVVnS0FaS0xUREFacWVXQmN3bEdwV3l4Um9sZks='
-image_folder = r'C:\Users\user\Documents\GitHub\OCR_Project\study_file\mj\캔'
+image_folder = r'C:\Users\mjink\OneDrive\문서\GitHub\OCR_Project\study_file\mj\original_archive\ramyeon_original\새 폴더'
 
 # Loop through all JPG files in the specified directory
 for filename in os.listdir(image_folder):
