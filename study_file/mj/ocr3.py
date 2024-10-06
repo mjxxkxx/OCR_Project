@@ -15,7 +15,7 @@ secret_key = 'ZWZmVVVnS0FaS0xUREFacWVXQmN3bEdwV3l4Um9sZks='
 image_folder = r'C:\Users\mjink\OneDrive\문서\GitHub\OCR_Project\study_file\mj\original_archive\snack_original'
 
 
-# 영양 성분 키워드 및 정규 표현식 정의 (나트륨 부분을 강화)
+# 영양 성분 키워드
 nutrition_keywords = {
     '칼로리': r'(\d+\.?\d*)\s*kcal',
     '탄수화물': r'탄수화물\s*:?(\d+\.?\d*\s*g)',
@@ -24,7 +24,7 @@ nutrition_keywords = {
     '당류': r'당류\s*:?(\d+\.?\d*\s*g)',
     '포화지방': r'포화지방\s*:?(\d+\.?\d*\s*g)',
     '트랜스지방': r'트랜스지방\s*:?(\d+\.?\d*\s*g)',
-    '나트륨': r'나트륨\s*:?(\d+\.?\d*\s*mg)',  # 나트륨 항목을 포함한 정규식
+    '나트륨': r'나트륨\s*:?(\d+\.?\d*\s*mg)', 
     '콜레스테롤': r'콜레스테롤\s*:?(\d+\.?\d*\s*mg)',
     '식이섬유': r'식이섬유\s*:?(\d+\.?\d*\s*g)',
     '칼슘': r'칼슘\s*:?(\d+\.?\d*\s*mg)',
@@ -42,7 +42,6 @@ def preprocess_images(image):
     # 원본 그레이스케일 변환
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # 전처리 방법들
     processed_images = []
 
     # 1. 기본 그레이스케일
