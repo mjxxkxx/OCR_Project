@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 import re
 
 # API 설정
-api_url = 'https://ql83sffmog.apigw.ntruss.com/custom/v1/34535/06797cb00558c159cb06e810ab3a4f931278516b50f25ac4b2858bed67990773/general'
-secret_key = 'ZWZmVVVnS0FaS0xUREFacWVXQmN3bEdwV3l4Um9sZks='
-image_folder = r'C:\Users\mjink\OneDrive\문서\GitHub\OCR_Project\study_file\mj\original_archive\snack_original'
+api_url = ''
+secret_key = ''
+image_folder = r''
 
 
 # 영양 성분 키워드
